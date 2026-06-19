@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZANGADOS - Robótica</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .hexagon-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23facc15' fill-opacity='0.05' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.18v12.64l10.99 6.34 11-6.34V17.18l-11-6.34L3 17.18zM0 15.18L13.99 7.18 28 15.18v16.64L13.99 39.82 0 31.82V15.18z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        @keyframes abelha-float {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            25% { transform: translateY(-5px) translateX(5px) rotate(5deg); }
+            50% { transform: translateY(-10px) translateX(0px) rotate(0deg); }
+            75% { transform: translateY(-5px) translateX(-5px) rotate(-5deg); }
+        }
+        .abelha-icon {
+            animation: abelha-float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body x-data="{ sponsorActive: false, showModal: false }" 
+      :class="sponsorActive ? 'bg-amber-950 text-white font-sans overflow-x-hidden relative hexagon-pattern transition-colors duration-1000' : 'bg-black text-white font-sans overflow-x-hidden relative hexagon-pattern transition-colors duration-1000'">
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div :class="sponsorActive ? 'absolute inset-0 opacity-50 bg-[radial-gradient(circle_at_20%_80%,rgba(251,191,36,0.4),transparent_60%),radial-gradient(circle_at_80%_20%,rgba(245,158,11,0.4),transparent_60%)] transition-opacity duration-1000' : 'absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_80%,rgba(251,191,36,0.15),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(245,158,11,0.15),transparent_50%)] transition-opacity duration-1000'"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+como+fazer+parceria+com+a+equipe+Zangados." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 ease-out whitespace-nowrap text-sm font-bold">
+            Fale conosco
+        </span>
+    </a>
+
+    <div class="relative z-10">
+
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center px-4 text-center relative py-20">
+            <div class="max-w-4xl mx-auto space-y-8 relative">
+                <i data-lucide="bee" class="w-12 h-12 text-yellow-400 opacity-20 absolute -top-16 -left-16 abelha-icon"></i>
+                <i data-lucide="bee" class="w-8 h-8 text-yellow-400 opacity-30 absolute top-10 -right-20 abelha-icon"></i>
+
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight relative">
+                    EQUIPE <span class="text-yellow-400 drop-shadow-[0_5px_15px_rgba(250,204,21,0.4)]">ZANGADOS</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"> 
+                    Bem-vindo ao site da ZANGADOS SESI Mogi das Cruzes 413. Movidos pela inovação, tecnologia e pelo trabalho em colmeia.
+                </p>
+                
+                <div class="relative w-full max-w-3xl mx-auto aspect-video rounded-xl overflow-hidden border border-yellow-400/30 shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+                         alt="Imagem da Equipe Zangados" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#about" class="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-yellow-400/20 transition-all duration-300">
+                        História
+                        <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+como+fazer+parceria+com+a+equipe+Zangados." 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                        <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                        Seja um Patrocinador
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div x-show="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" x-cloak>
+            <div @click.away="showModal = false" class="bg-gray-900 border border-yellow-400/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+                <button @click="showModal = false" class="absolute top-4 right-4 text-gray-400 hover:text-yellow-400">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <h3 class="text-2xl font-bold text-yellow-400 mb-2 flex items-center gap-2">
+                    <i data-lucide="crown" class="w-6 h-6"></i> Apoie a Colmeia!
+                </h3>
+                <p class="text-gray-300 text-sm mb-4">Entre em contato conosco para alinhar sua marca com a nossa equipe.</p>
+                <form class="space-y-4" @submit.prevent="alert('Obrigado pelo interesse! Entraremos em contato em breve.'); showModal = false">
+                    <div>
+                        <label class="block text-xs text-yellow-400 font-bold mb-1">NOME DA EMPRESA</label>
+                        <input type="text" required class="w-full bg-black border border-gray-700 rounded-lg p-2.5 text-white focus:border-yellow-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-yellow-400 font-bold mb-1">E-MAIL DE CONTATO</label>
+                        <input type="email" required class="w-full bg-black border border-gray-700 rounded-lg p-2.5 text-white focus:border-yellow-400 outline-none">
+                    </div>
+                    <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-2.5 rounded-lg hover:bg-yellow-500 transition-colors">Enviar Proposta</button>
+                </form>
+            </div>
+        </div>
+
+        <section id="about" class="relative py-24 border-t border-yellow-400/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 relative">
+                    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">Sobre Nós</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div class="space-y-6">
+                        <div class="relative overflow-hidden rounded-lg group">
+                            <img src="https://images.unsplash.com/photo-1581092333322-31d2fd38a35e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Team working" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 flex flex-col justify-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">Nossa História</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                         <span class="text-yellow-400 font-semibold">A equipe ZANGADOS</span> foi formada a partir de um processo seletivo realizado no SESI Mogi das Cruzes 413, reunindo estudantes com interesse em tecnologia, inovação e robótica educacional. Somos uma equipe participante da OBR (Olimpíada Brasileira de Robótica), atuando com dedicação no desenvolvimento de projetos e desafios da competição. <p>
+Inspirada na organização de uma colmeia, a equipe atua de maneira estruturada, colaborativa e responsável, valorizando a contribuição individual de cada integrante para o alcance dos objetivos coletivos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="relative py-24 border-t border-yellow-400/10 bg-gradient-to-b from-transparent to-gray-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">Nossos Projetos</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+                    <p class="text-gray-300 text-lg max-w-3xl mx-auto">A engenharia e a tecnologia desenvolvidas em nossos laboratórios.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="rodas.jpeg" alt="Rodas PU" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Rodas Customizadas em PU de vedação</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Desenvolvemos rodas personalizadas para o robô, estudando o uso de PU de vedação para os pneus. Para isso, projetamos e fabricamos um molde em impressora 3D, aplicando conceitos de modelagem e prototipagem.
+</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="mao.png" alt="Arduino" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Mão Mecânico</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Esta mão mecânico foi construído com peças impressas em 3D, micro servomotores e controle por Arduino. O sistema utiliza uma câmera conectada ao computador para identificar os movimentos da mão do usuário por meio da tecnologia Hand Tracking. Os movimentos captados são enviados ao Arduino, permitindo que o mão mecânico os reproduza em tempo real.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="vaso.jpg" alt="Chassi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Vaso Inteligente</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Vaso Inteligente utiliza um sensor de umidade do solo conectado a um Arduino para monitorar as condições da planta em tempo real. As informações são exibidas em uma matriz de LEDs 8x8, que representa o estado da planta por meio de expressões faciais: quando o solo está com umidade adequada, o visor mostra um rosto feliz; quando a terra está seca e precisa de água, exibe um rosto triste. Esse sistema torna o acompanhamento da planta mais intuitivo e interativo, unindo eletrônica, programação e automação em um projeto educativo e criativo</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="lixeira.jpg" alt="Placa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Lixeira Inteligente</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Desenho e confecção de placas de circuito impresso próprias para otimizar o fluxo elétrico do robô.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Impressão" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Manufatura Aditiva (3D)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Impressão de suportes e peças de acabamento em filamentos de alta resistência mecânica como PETG e ABS.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+                        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Telemetria" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-2">Módulo de Telemetria</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Envio de dados de desempenho e bateria em tempo real para o computador da equipe de suporte na arena.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="members" class="relative py-24 border-t border-yellow-400/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">Integrantes</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Isabela Aysha da Fonseca Pereira</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pelo Desenho Técnico</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Bruno Hideki Yokogawa</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pela Parte Elétrica</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Livia Quintilhano Nogueira</h4>
+                        <p class="text-yellow-400 text-sm">Responsável Multifuncional & Planejamento</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Karolina Araujo de Jesus Silva</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pela Montagem</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Beatriz Santalla</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pelo Marketing & Patrocínio</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Samara Lamounier</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pelo Marketing & Patrocínio</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-900 to-black border border-yellow-400/20 rounded-xl p-6 text-center group hover:border-yellow-400/60 transition-all">
+                        <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-yellow-400/30 mb-4 group-hover:border-yellow-400 transition-all">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Integrante" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Gabriela Borgues</h4>
+                        <p class="text-yellow-400 text-sm">Responsável pelo Marketing & Patrocínio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trajectory" class="relative py-24 border-t border-yellow-400/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">Nossa Trajetória</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+                    <p class="text-gray-300 text-lg max-w-3xl mx-auto">A jornada completa da nossa colmeia estruturada em 6 marcos principais.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group bg-gradient-to-b from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all flex flex-col justify-between">
+                        <div class="h-44 w-full overflow-hidden relative">
+                            <img src="robo 1.jpeg" alt="Fundação" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-black font-extrabold px-3 py-1 rounded-md text-xs">PASSO 01</span>
+                        </div>
+                        <div class="p-5 flex-grow">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-1">Nosso Primeiro Robô</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Este foi o primeiro robô desenvolvido pela equipe, representando o início da nossa trajetória na robótica. Construído com uma estrutura simples, o projeto foi criado para colocar em prática os primeiros conhecimentos de programação, eletrônica e montagem de robôs.</p>
+                        </div>
+                    </div>
+                    <div class="group bg-gradient-to-b from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all flex flex-col justify-between">
+                        <div class="h-44 w-full overflow-hidden relative">
+                            <img src="robo 2.jpeg" alt="Primeiro Robô" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-black font-extrabold px-3 py-1 rounded-md text-xs">PASSO 02</span>
+                        </div>
+                        <div class="p-5 flex-grow">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-1">Nosso Segundo Robô</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">O segundo robô da equipe é um avanço em robótica, focado em mobilidade e detecção de obstáculos. Ele usa uma plataforma com duas rodas, controlada por Arduino e seguidores de linha.</p>
+                        </div>
+                    </div>
+                    <div class="group bg-gradient-to-b from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all flex flex-col justify-between">
+                        <div class="h-44 w-full overflow-hidden relative">
+                            <img src="robo 3.jpeg" alt="Estreia" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-black font-extrabold px-3 py-1 rounded-md text-xs">PASSO 03</span>
+                        </div>
+                        <div class="p-5 flex-grow">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-1">Nosso Terceiro Robô</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Desenvolvido pela equipe ZANGADOS, nosso terceiro robô possui um chassi inspirado em colmeias, reforçando a identidade da equipe. Equipado com sensores para seguir linha e pilates feitos na impressora 3D. Ele une criatividade e evolução no aprendizado de robótica e programação.</p>
+                        </div>
+                    </div>
+                    <div class="group bg-gradient-to-b from-gray-900 to-black border border-yellow-400/20 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all flex flex-col justify-between">
+                        <div class="h-44 w-full overflow-hidden relative">
+                            <img src="robo 4.jpeg" alt="Reconhecimento" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-black font-extrabold px-3 py-1 rounded-md text-xs">PASSO 04</span>
+                        </div>
+                        <div class="p-5 flex-grow">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-1">Nosso Quarto Robô</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Desenvolvido pela equipe ZANGADOS, nosso quarto robô marcou mais uma etapa da nossa evolução na robótica. Equipado com sensores e uma estrutura funcional, ele foi projetado para executar desafios com precisão, contribuindo para o desenvolvimento de nossas habilidades em programação, eletrônica e montagem.
+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative py-20 border-t border-yellow-400/10 bg-gray-950 text-center">
+            <div class="max-w-4xl mx-auto px-4 space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-yellow-400">Seja um Patrocinador da Equipe ZANGADOS</h2>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+               A equipe ZANGADOS busca parcerias que contribuam para o desenvolvimento de projetos de robótica educacional e para a participação em competições. O apoio dos patrocinadores auxilia na aquisição de materiais, componentes e recursos necessários para nossas atividades, fortalecendo a formação técnica e o aprendizado dos integrantes.
+                </p>
+                <div class="pt-4">
+                    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+como+fazer+parceria+com+a+equipe+Zangados." 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full shadow-xl transition-transform duration-300 hover:scale-105">
+                        <i data-lucide="message-square-text" class="w-5 h-5"></i>
+                        Conversar no WhatsApp e Ser Parceiro
+                    </a>
+                </div><section class="relative py-20 border-t border-slate-900 bg-slate-950 text-center overflow-hidden">
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60vw] h-[20vw] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-4 space-y-8 relative z-10">
+                
+                <div class="flex justify-center pt-4">
+                    <div class="w-44 h-44 drop-shadow-[0_10px_25px_rgba(250,204,21,0.2)] abelha-icon">
+                        <img src="logo.png" 
+                             alt="Logo Oficial Equipe Zangados" 
+                             class="w-full h-full object-contain">
+                    </div>
+                <p class="text-xs text-gray-600 pt-12">© 2026 Equipe Zangados 413. Todos os direitos reservados.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
